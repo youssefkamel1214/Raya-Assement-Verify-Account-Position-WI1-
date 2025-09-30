@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URGENT: System Crash Incident</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            color: white;
+            padding: 25px 30px;
+        }
+        .content {
+            padding: 25px 30px;
+        }
+        .alert-section {
+            background: #ffebee;
+            border-left: 5px solid #d32f2f;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .detail-item {
+            padding: 12px;
+            background: #f9f9f9;
+            border-radius: 4px;
+            border-left: 3px solid #d32f2f;
+        }
+        .exception-box {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        .actions {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 25px 0;
+        }
+        .footer {
+            background: #f5f5f5;
+            padding: 20px 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #e0e0e0;
+        }
+        .priority-high {
+            display: inline-block;
+            background: #d32f2f;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .button {
+            display: inline-block;
+            background: #d32f2f;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .source-info {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        @media only screen and (max-width: 600px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚨 SYSTEM CRASH INCIDENT</h1>
+            <p>Automated Alert from System Monitoring</p>
+        </div>
+        
+        <div class="content">
+            <div class="priority-high">HIGH PRIORITY - IMMEDIATE ATTENTION REQUIRED</div>
+            
+            <p><strong>Dear IT Team,</strong></p>
+            
+            <p>This is an automated alert to inform you that a critical system has crashed during active operation.</p>
+            
+            <div class="alert-section">
+                <h2 style="margin-top: 0; color: #d32f2f;">⚠️ System Crash Detected</h2>
+                <p><strong>Issue:</strong> System crashed while actively being worked on, causing service interruption and potential data loss.</p>
+            </div>
+            
+            <h3>📋 Incident Details</h3>
+            <div class="details-grid">
+                <div class="detail-item">
+                    <strong>Event Type:</strong><br>
+                    System Crash
+                </div>
+                <div class="detail-item">
+                    <strong>Severity:</strong><br>
+                    Critical
+                </div>
+                <div class="detail-item">
+                    <strong>Detection Time:</strong><br>
+                    <span id="currentTime"></span>
+                </div>
+                <div class="detail-item">
+                    <strong>Impact:</strong><br>
+                    Service Disruption
+                </div>
+            </div>
+
+            <div class="source-info">
+                <h3 style="margin-top: 0; color: #856404;">🔍 Source Information</h3>
+                <p><strong>Source System:</strong> <span id="sourceSystem">Acme System 1 Web Application</span></p>
+                <p><strong>Component:</strong> <span id="componentName">User Authentication Module</span></p>
+                <p><strong>Method/Function:</strong> <span id="methodName">processUserLogin()</span></p>
+                <p><strong>Source File:</strong> <span id="sourceFile">/src/controllers/authController.js:127</span></p>
+            </div>
+
+            <h3>🚨 Exception Details</h3>
+            <div class="exception-box" id="exceptionMessage">
+Message:[ExceptionMessage]
+Stack Trace Context:[ExceptionStacktrace]
+Source:[ExceptionSource]
+            </div>
+            
+            <h3>🚀 Required Actions</h3>
+            <div class="actions">
+                <ol>
+                    <li>Immediately investigate the crash cause using the source information provided</li>
+                    <li>Review exception details and stack trace</li>
+                    <li>Check system logs for additional error context</li>
+                    <li>Assess impact on users and services</li>
+                    <li>Initiate recovery procedures</li>
+                    <li>Communicate status updates to stakeholders</li>
+                </ol>
+                <a href="#" class="button">View Incident Dashboard</a>
+            </div>
+            
+            <p><strong>Next Steps:</strong> The incident response team has been automatically notified. Please begin investigation immediately using the source and exception details provided, and update the incident management system.</p>
+        </div>
+        
+        <div class="footer">
+            <p>This is an automated message from the System Monitoring Bot.</p>
+            <p>Please do not reply to this email. Contact the IT Command Center for assistance.</p>
+            <p>© 2023 IT Operations. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Add current timestamp
+        document.getElementById('currentTime').textContent = new Date().toLocaleString();
+        
+        // You can dynamically populate these fields from your monitoring system
+        // Example:
+        // document.getElementById('sourceSystem').textContent = crashData.systemName;
+        // document.getElementById('componentName').textContent = crashData.component;
+        // document.getElementById('methodName').textContent = crashData.method;
+        // document.getElementById('sourceFile').textContent = crashData.file + ':' + crashData.line;
+        // document.getElementById('exceptionMessage').textContent = crashData.exception;
+    </script>
+</body>
+</html>

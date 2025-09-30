@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credentials Issue Notification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #d32f2f;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .alert-box {
+            background: #ffebee;
+            border-left: 5px solid #d32f2f;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+        }
+        
+        .details {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        
+        .detail-item {
+            display: flex;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            width: 180px;
+            color: #555;
+        }
+        
+        .actions {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: #1976d2;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #333;
+            border: 1px solid #ddd;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .footer {
+            background: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .timestamp {
+            text-align: right;
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 600px) {
+            .detail-item {
+                flex-direction: column;
+            }
+            
+            .detail-label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 Credentials Issue Notification</h1>
+            <p>IT Department Alert</p>
+        </div>
+        
+        <div class="content">
+            <div class="timestamp">Generated on: <span id="current-date"></span></div>
+            
+            <div class="alert-box">
+                <h2>⚠️ Authentication Issue Detected</h2>
+                <p>A user has reported being provided with incorrect credentials for system access.</p>
+            </div>
+            
+            <h2>Issue Details</h2>
+            <div class="details">
+                <div class="detail-item">
+                    <div class="detail-label">Reported By:</div>
+                    <div>Bot at Machine : [machineName]</div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-label">Buissness Exception:</div>
+                    <div>Acme System </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-label">Issue Type:</div>
+                    <div>Invalid Credentials Provided</div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-label">Reported Time:</div>
+                    <div id="reported-time">[reportedtime]</div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-label">Priority:</div>
+                    <div><span style="color: #d32f2f; font-weight: bold;">High</span> - User cannot access critical system</div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-label">Description:</div>
+                    <div>The credentials provided to the user for the new Acme system are not working. User receives "Invalid username or password" error .</div>
+                </div>
+            </div>
+            
+           
+    </div>
+
+
+</body>
+</html>
