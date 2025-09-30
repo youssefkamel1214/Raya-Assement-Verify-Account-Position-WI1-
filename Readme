@@ -1,0 +1,74 @@
+🚀 README: ACME System 1 Transactional Bot
+📄 Project Description
+This is an RPA (Robotic Process Automation) Performer Bot designed to process data transactions using the ACME System 1 application. The bot is built using the UiPath Robotic Enterprise Framework (REFramework) pattern, leveraging an Orchestrator Queue to manage and execute individual transactions robustly.
+
+The robot follows a typical transactional flow:
+
+Initialization: Set up configurations, kill conflicting processes, and log into ACME System 1.
+
+Get Transaction Data: Retrieve the next item from the Orchestrator Queue.
+
+Process Transaction: Execute the core business logic (e.g., navigate, extract, process data) within ACME System 1.
+
+Finalization: Close applications and end the execution.
+
+🛠️ Prerequisites
+Before deploying and running this automation, ensure the following are in place:
+
+RPA Platform: UiPath Studio and a connected UiPath Robot.
+
+Orchestrator: A dedicated Orchestrator Queue is required for input data management.
+
+Target Application: ACME System 1 web application access.
+
+Configuration: The Data\Config.xlsx file must be correctly populated with application settings, credentials, and email parameters.
+
+Assets: Orchestrator Assets for secure storage of credentials (e.g., ACME System 1 login, Email credentials) as referenced in InitAllSettings.xaml.
+
+⚙️ Project Structure (Workflow Overview)
+The project adheres to the REFramework standard and is organized by functionality:
+
+1. Framework Workflows
+File Name	Purpose	Key Details
+Main.xaml	The main State Machine controlling the entire process flow.	Handles the flow between Init, Get Transaction Data, Process, and End Process states.
+InitAllSettings.xaml	Reads configuration and loads Orchestrator Assets.	Reads Data\Config.xlsx and loads credentials/settings into the Config dictionary.
+InitAllApplications.xaml	Initializes all necessary applications.	Invokes LoginToAcmeSystem1.xaml to authenticate.
+KillAllProcesses.xaml	Ensures a clean environment before execution.	Calls Forse_Close_Browser.xaml to forcefully close the browser process.
+GetTransactionData.xaml	Fetches the next item to process.	Retrieves the next work item from the Orchestrator Queue.
+Process.xaml	Executes the core business logic for a single transaction.	Contains or invokes the necessary steps to process one work item.
+SetTransactionStatus.xaml	Updates the transaction status.	Sets status to Success, Business Exception, or System Exception and handles reporting/retries.
+CloseAllApplications.xaml	Gracefully closes all open applications.	Invokes LogoutAcmeSystem1.xaml and CloseAcmeSystem1.xaml.
+RetryCurrentTransaction.xaml	Handles the logic for retrying a failed transaction.	Increments the retry counter and re-queues the item if within the configured limit.
+2. ACME System 1 Specific Workflows
+These files encapsulate actions within the target application:
+
+File Name	Purpose
+LoginToAcmeSystem1.xaml	Logs into the ACME System 1 portal using provided credentials.
+LogoutAcmeSystem1.xaml	Logs out from the ACME System 1 application.
+CloseAcmeSystem1.xaml	Closes the ACME System 1 browser instance gracefully.
+MapsToWorkItemsPage.xaml	Navigates to the Work Items section in the ACME application.
+ExtractWorkItemsData.xaml	Scrapes data from the Work Items table, likely used in a preliminary step to populate the queue.
+MapsToClientAccounts.xaml	Navigates to the main Client Accounts page.
+MapsToAccountMovement.xaml	Navigates to the account movement page for a specific account number.
+MapsToSearchClientByIdWindow.xaml	Navigates to the window/section for searching clients by ID.
+3. Utility & Error Handling Workflows
+File Name	Purpose
+SendEmail.xaml	Generic workflow for sending email notifications.
+ApplicationCrashedEmail.xaml	Specific logic to format and send an email when an application crash (AE01) is detected.
+CheckIfApplicationCrashed.xaml	Checks for application crash elements and throws a System Exception if detected (AE01 Acme System 1 has crashed).
+TakeScreenshot.xaml	Captures a screenshot, typically used as part of error handling and logging.
+DetectifEmailCredaintlsMatch.xaml	Checks if the logged-in email on the ACME dashboard matches the configured email.
+🔄 Execution Flow
+The bot operates in a loop:
+
+Initial Setup: KillAllProcesses -> InitAllSettings -> InitAllApplications (including ACME Login).
+
+Transaction Loop:
+
+GetTransactionData: Tries to get the next queue item. If null, the process ends.
+
+Process: Executes the core steps (Maps..., business logic).
+
+SetTransactionStatus: Sets item status in the queue and handles retries via RetryCurrentTransaction upon System Exception.
+
+Final Cleanup: CloseAllApplications on successful completion. If an unrecoverable exception occurs, it closes all applications and uses the email utilities (ApplicationCrashedEmail.xaml) for critical alerts.
