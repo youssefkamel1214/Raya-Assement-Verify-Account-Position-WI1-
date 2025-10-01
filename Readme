@@ -2,8 +2,6 @@
 
 
 ![Image](https://github.com/user-attachments/assets/f71c8834-dd64-4ce4-9e48-89f49d15dc58)
-![Performer Process](perofmer.gif)
-
 # Project Analysis
 
 This UiPath RPA project automates the verification of account positions in ACME System 1, following the robust REFramework pattern. The solution is split into two main components for scalability and maintainability:
