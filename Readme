@@ -1,123 +1,91 @@
 🚀 Raya Assessment – Verify Account Position (WI1)
-📄 Project Overview
 
-This project is an RPA solution developed in UiPath to automate the verification of account positions in the ACME System 1 application.
 
-It follows the Robotic Enterprise Framework (REFramework) pattern, ensuring:
+![Dispatcher Process](Dispatcher.gif)
+![Performer Process](perofmer.gif)
 
-Robust error handling
+# Project Analysis
 
-Transactional processing via UiPath Orchestrator Queues
+This UiPath RPA project automates the verification of account positions in ACME System 1, following the robust REFramework pattern. The solution is split into two main components for scalability and maintainability:
 
-Modular workflows for scalability and reusability
+## Dispatcher
+- **Purpose:** Extracts work items from ACME System 1 and loads them into an Orchestrator Queue.
+- **Key Steps:**
+    - Initializes applications and configuration.
+    - Extracts data from ACME System 1.
+    - Adds extracted data to the Orchestrator Queue for processing.
+- **Main Workflows:**
+    - `Main.xaml`: Controls the overall dispatcher flow.
+    - `InitAllSettings.xaml`: Loads configuration and assets.
+    - `InitAllApplications.xaml`: Initializes ACME System 1.
+    - `GetTransactionData.xaml`: Retrieves and queues work items.
+    - `CloseAllApplications.xaml`: Cleans up and closes applications.
 
-The solution is divided into two main components:
+## Performer
+- **Purpose:** Processes queue items and executes account verification logic in ACME System 1.
+- **Key Steps:**
+    - Retrieves transaction items from the queue.
+    - Navigates ACME System 1 to verify accounts.
+    - Applies business rules, updates status, and handles exceptions.
+    - Logs out and cleans up applications.
+- **Main Workflows:**
+    - `Main.xaml`: Controls the overall performer flow.
+    - `Process.xaml`: Executes the core verification logic.
+    - `SetTransactionStatus.xaml`: Updates transaction outcome.
+    - `RetryCurrentTransaction.xaml`: Handles retries for failed items.
+    - `ApplicationCrashedEmail.xaml`: Sends crash notifications.
 
-Dispatcher: Extracts data from ACME System 1 and loads it into an Orchestrator Queue.
+# Prerequisites
+- UiPath Studio and Robot installed and connected
+- UiPath Orchestrator Queue configured
+- Access credentials for ACME System 1
+- Populated configuration file at `Data\Config.xlsx`
+- Orchestrator Assets for secure credential storage
 
-Performer: Processes items from the queue and executes the verification logic inside ACME System 1.
+# Project Structure
 
-🔄 Execution Flow
-Dispatcher
+```
+Raya-Assement/
+├── AcmeSystemIsntOpenBody.html
+├── ApplicationCrashedEmail.html
+├── Recording 2025-10-01 224109.gif
+├── WrongCredaitialsEmailTemplate.html.html
+├── RAYA-REF-Verify Account Position Dispatcher/
+│   ├── AcmeSystem1/
+│   ├── Data/
+│   ├── Documentation/
+│   ├── Exceptions_Screenshots/
+│   ├── Framework/
+│   ├── LICENSE
+│   ├── Main.xaml
+│   ├── Main.xaml.json
+│   ├── README.md
+│   ├── Tests/
+│   └── project.json
+├── RAYA-REF-Verify Account Position Perfomer/
+│   ├── AcmeSystem1/
+│   ├── AcmeSystem3/
+│   ├── Data/
+│   ├── Documentation/
+│   ├── Exceptions_Screenshots/
+│   ├── Framework/
+│   ├── LICENSE
+│   ├── Main.xaml
+│   ├── Main.xaml.json
+│   ├── README.md
+│   ├── Tests/
+│   └── project.json
+```
 
-Initialize applications and configuration.
+Each main folder contains modular workflows, configuration, and supporting files for either Dispatcher or Performer roles. Shared folders support data, documentation, exception handling, and testing.
 
-Extract Work Items from ACME System 1.
+# Email Templates
+- `AcmeSystemIsntOpenBody.html`: Triggered when ACME System 1 is not accessible
+- `ApplicationCrashedEmail.html`: Triggered on application crash (AE01)
+- `WrongCredaitialsEmailTemplate.html.html`: Triggered when login credentials are invalid
 
-Add extracted data to the Orchestrator Queue.
-
-Performer
-
-Retrieve a transaction item from the queue.
-
-Navigate through ACME System 1 to process the account verification.
-
-Apply business rules, update status, and handle exceptions.
-
-Log out and clean up applications.
-
-🛠️ Prerequisites
-
-Before running the automation, ensure the following are available:
-
-UiPath Studio and UiPath Robot installed and connected.
-
-UiPath Orchestrator Queue configured for this process.
-
-Access credentials for ACME System 1.
-
-Correctly populated configuration file at Data\Config.xlsx.
-
-Orchestrator Assets for secure credential storage (e.g., ACME System credentials, email credentials).
-
-⚙️ Key Workflows
-Workflow	Purpose	Notes
-Main.xaml	Orchestrates the process flow using a state machine	Includes Init, Get Transaction, Process, End states
-InitAllSettings.xaml	Loads configuration and assets	Reads from Data\Config.xlsx
-InitAllApplications.xaml	Initializes ACME System 1	Calls LoginToAcmeSystem1.xaml
-GetTransactionData.xaml	Retrieves next queue item	Ends process if queue is empty
-Process.xaml	Executes account verification logic	Navigates ACME, extracts data, applies business rules
-SetTransactionStatus.xaml	Updates transaction outcome	Success, Business Exception, or System Exception
-CloseAllApplications.xaml	Logs out and closes apps	Calls LogoutAcmeSystem1.xaml, CloseAcmeSystem1.xaml
-RetryCurrentTransaction.xaml	Handles retries for failed items	Controlled via config retry settings
-ApplicationCrashedEmail.xaml	Sends notification when crash is detected	Uses email template for AE01 (application crash)
-📂 Project Structure
-└── Raya-Assement-Verify-Account-Position-WI1-/
-    ├── AcmeSystemIsntOpenBody.html
-    ├── ApplicationCrashedEmail.html
-    ├── RAYA-REF-Verify Account Position Dispatcher
-    │   ├── .local
-    │   ├── .objects
-    │   ├── .project
-    │   ├── .settings
-    │   ├── .tmh
-    │   ├── AcmeSystem1
-    │   ├── Data
-    │   ├── Documentation
-    │   ├── Exceptions_Screenshots
-    │   ├── Framework
-    │   ├── LICENSE
-    │   ├── Main.xaml
-    │   ├── Main.xaml.json
-    │   ├── README.md
-    │   ├── Tests
-    │   └── project.json
-    ├── RAYA-REF-Verify Account Position Perfomer
-    │   ├── .local
-    │   ├── .objects
-    │   ├── .project
-    │   ├── .screenshots
-    │   ├── .settings
-    │   ├── .tmh
-    │   ├── AcmeSystem1
-    │   ├── AcmeSystem3
-    │   ├── Data
-    │   ├── Documentation
-    │   ├── Exceptions_Screenshots
-    │   ├── Framework
-    │   ├── LICENSE
-    │   ├── Main.xaml
-    │   ├── Main.xaml.json
-    │   ├── README.md
-    │   ├── Tests
-    │   └── project.json
-    ├── Readme
-    └── WrongCredaitialsEmailTemplate.html.html
-
-📧 Email Templates
-
-AcmeSystemIsntOpenBody.html → Triggered when ACME System 1 is not accessible.
-
-ApplicationCrashedEmail.html → Triggered on application crash (AE01).
-
-WrongCredaitialsEmailTemplate.html.html → Triggered when login credentials are invalid.
-
-✅ Summary
-
-This automation ensures seamless and reliable account position verification by:
-
-Separating Dispatcher and Performer for scalability.
-
-Leveraging REFramework for resilience.
-
-Using UiPath Orchestrator for transaction management and monitoring.
+# Summary
+This automation ensures reliable and scalable account position verification by:
+- Separating Dispatcher and Performer for modularity
+- Leveraging REFramework for resilience and error handling
+- Using UiPath Orchestrator for transaction management and monitoring

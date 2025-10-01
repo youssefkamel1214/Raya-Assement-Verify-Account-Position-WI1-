@@ -78,7 +78,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Delete_All_Items" sap:VirtualizedContainerService.HintSize="762,966.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Delete_All_Items" sap:VirtualizedContainerService.HintSize="741.2,966.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="listQuqueItems" />
     </Sequence.Variables>
@@ -87,9 +87,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="Equals" FolderPath="Process Vendor Invoice -RAYA-Assessement" sap:VirtualizedContainerService.HintSize="451.2,175.2" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New, InProgress, Retried" QueueName="Work_Items_Queue" Result="[listQuqueItems]" />
+    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="Equals" FolderPath="Verify Account Position-RAYA-Assessement" sap:VirtualizedContainerService.HintSize="451.2,175.2" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New, InProgress, Retried" QueueName="Work_Items_Queue" Result="[listQuqueItems]" />
     <ui:DeleteQueueItems FolderPath="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Delete Queue Items" sap:VirtualizedContainerService.HintSize="451.2,122.4" sap2010:WorkflowViewState.IdRef="DeleteQueueItems_1" QueueItems="[listQuqueItems]" />
-    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="Equals" FolderPath="Process Vendor Invoice -RAYA-Assessement" sap:VirtualizedContainerService.HintSize="451.2,175.2" sap2010:WorkflowViewState.IdRef="GetQueueItems_2" QueueItemStates="New, InProgress, Retried" QueueName="Work_Items_Queue" Result="[listQuqueItems]" />
+    <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="Equals" FolderPath="Verify Account Position-RAYA-Assessement" sap:VirtualizedContainerService.HintSize="451.2,175.2" sap2010:WorkflowViewState.IdRef="GetQueueItems_2" QueueItemStates="New, InProgress, Retried" QueueName="Work_Items_Queue" Result="[listQuqueItems]" />
     <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[listQuqueItems.Count&gt;0]" DisplayName="While" sap:VirtualizedContainerService.HintSize="451.2,470.4" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
       <ui:InterruptibleWhile.Body>
         <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="449.6,348.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
@@ -99,7 +99,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:DeleteQueueItems FolderPath="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Delete Queue Items" sap:VirtualizedContainerService.HintSize="416,122.4" sap2010:WorkflowViewState.IdRef="DeleteQueueItems_2" QueueItems="[listQuqueItems]" />
-          <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="Equals" FolderPath="Process Vendor Invoice -RAYA-Assessement" sap:VirtualizedContainerService.HintSize="416,166.4" sap2010:WorkflowViewState.IdRef="GetQueueItems_3" QueueItemStates="New, InProgress, Retried" QueueName="Work_Items_Queue" Result="[listQuqueItems]" />
+          <ui:GetQueueItems Duration="{x:Null}" From="{x:Null}" Priority="{x:Null}" Reference="{x:Null}" Skip="{x:Null}" TimeoutMS="{x:Null}" To="{x:Null}" Top="{x:Null}" DisplayName="Get Queue Items" FilterStrategy="Equals" FolderPath="Verify Account Position-RAYA-Assessement" sap:VirtualizedContainerService.HintSize="416,166.4" sap2010:WorkflowViewState.IdRef="GetQueueItems_3" QueueItemStates="New, InProgress, Retried" QueueName="Work_Items_Queue" Result="[listQuqueItems]" />
         </Sequence>
       </ui:InterruptibleWhile.Body>
     </ui:InterruptibleWhile>
